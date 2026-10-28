@@ -1,0 +1,1334 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Que tu bolso hable por ti · Bimba y Lola (proyecto académico)</title>
+  <meta name="description" content="Landing page conceptual de captación para Bimba y Lola. Proyecto académico del Máster en Marketing Digital de ESIC.">
+  <meta name="robots" content="noindex">
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Tipografías: Archivo Black (titulares) + Inter (textos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!--
+    GOOGLE ANALYTICS 4 (opcional, para medir los KPIs de la memoria)
+    1. Crea una propiedad en analytics.google.com y copia tu ID (G-XXXXXXXXXX).
+    2. Quita los símbolos de comentario de las líneas de abajo y pon tu ID en los dos sitios.
+  -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <style>
+    :root {
+      --black: #111111;
+      --white: #FFFFFF;
+      --grey-bg: #F4F4F2;
+      --grey-form: #EDEDEB;
+      --grey-ph: #D8D8D4;
+      --grey-text: #55554F;
+      --rose: #EC1763;
+      --blue: #5568AF;
+      --lime: #CAD629;
+      --sunset: #E47F3D;
+      --max: 1320px;
+      --gutter: 20px;
+      /* Posición horizontal de la etiqueta del bolso en escritorio (0 % = izquierda, 70 % = derecha) */
+      --tag-x: 62%;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3 { margin: 0; }
+    p { margin: 0; }
+    figure { margin: 0; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+    .display {
+      font-family: "Archivo Black", "Inter", sans-serif; font-weight: 400;
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .section-title { font-size: clamp(36px, 6vw, 84px); margin-bottom: 32px; }
+    .eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; margin-bottom: 12px;
+    }
+
+    /* Huecos de imagen/vídeo: gris con aspa y etiqueta hasta que subas el archivo real */
+    .ph {
+      position: relative; overflow: hidden;
+      background:
+        linear-gradient(to top right, transparent calc(50% - .6px), rgba(0,0,0,.14) 50%, transparent calc(50% + .6px)),
+        linear-gradient(to top left, transparent calc(50% - .6px), rgba(0,0,0,.14) 50%, transparent calc(50% + .6px)),
+        var(--grey-ph);
+    }
+    .ph::before {
+      content: attr(data-label);
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      padding: 7px 12px; background: var(--grey-ph);
+      border: 1px solid rgba(0,0,0,.25);
+      font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: #6b6b66; white-space: nowrap;
+    }
+    .ph img, .ph video { position: relative; width: 100%; height: 100%; object-fit: cover; }
+
+    /* Botón rosa (texto negro, esquinas rectas) */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+      min-height: 56px; padding: 16px 28px;
+      background: var(--rose); color: var(--black);
+      font-family: "Inter", sans-serif; font-size: 17px; font-weight: 700;
+      border: 0; border-radius: 0; cursor: pointer; text-decoration: none;
+      transition: filter .15s ease, transform .15s ease;
+    }
+    .btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
+    .btn--block { width: 100%; }
+
+    /* ========== 1 · HERO ==========
+       Ocupa toda la pantalla al abrir la web (la franja rosa aparece al hacer scroll).
+       Es una cuadrícula de tres filas: cabecera / zona de la etiqueta / titular.
+       Como cada elemento tiene su propia fila, la etiqueta y el titular nunca se tapan. */
+    .hero {
+      position: relative; overflow: hidden;
+      display: grid; grid-template-rows: auto minmax(110px, 1fr) auto;
+      min-height: 100vh; min-height: 100svh;
+      color: var(--white);
+    }
+    .hero > .ph { position: absolute; inset: 0; background-color: #6d6d6a; }
+    .hero > .ph::before { background: transparent; border: 0; color: rgba(255,255,255,.55); }
+    .hero::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.8) 0%, rgba(0,0,0,.3) 16%, rgba(0,0,0,0) 30%),
+        linear-gradient(to top, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 40%);
+    }
+
+    /* Cabecera con menú */
+    .topbar {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 16px var(--gutter);
+    }
+    .logo {
+      font-family: "Archivo Black", sans-serif; font-size: 20px; letter-spacing: -0.01em;
+      color: var(--white); text-decoration: none; white-space: nowrap;
+    }
+    .nav { display: none; align-items: center; gap: 28px; }
+    .nav a {
+      color: var(--white); text-decoration: none;
+      font-size: 14px; font-weight: 800; letter-spacing: .02em; text-transform: uppercase;
+    }
+    .nav a:hover { text-decoration: underline; text-underline-offset: 6px; }
+    .nav .nav__next { border: 1.5px solid var(--white); padding: 12px 16px; }
+    .nav .nav__next:hover { background: var(--white); color: var(--black); text-decoration: none; }
+    .icons { display: flex; align-items: center; gap: 8px; }
+    .icon-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; color: var(--white);
+      background: none; border: 0; padding: 0; cursor: pointer;
+    }
+
+    /* Menú desplegable en móvil */
+    .mobile-menu {
+      position: absolute; top: 76px; left: 0; right: 0; z-index: 20;
+      background: var(--black); padding: 8px var(--gutter) 20px;
+    }
+    .mobile-menu a {
+      display: block; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.15);
+      color: var(--white); text-decoration: none; font-weight: 800; text-transform: uppercase; font-size: 15px;
+    }
+
+    /* Fila central: zona de la etiqueta */
+    .hero__stage {
+      position: relative; z-index: 3;
+      display: flex; align-items: center; justify-content: flex-end;
+      padding: 16px var(--gutter);
+    }
+    .tag {
+      display: flex; align-items: center; gap: 12px; color: var(--black); text-decoration: none;
+      background: none; border: 0; padding: 0; font: inherit; text-align: left; cursor: pointer;
+    }
+    .tag__dot {
+      position: relative; width: 26px; height: 26px; border-radius: 50%; flex: none;
+      background: var(--white); box-shadow: 0 0 0 6px rgba(255,255,255,.4);
+    }
+    .tag__dot::after { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: var(--black); }
+    .tag__dot::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; animation: pulse 2.2s infinite; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,255,255,.7); }
+      70% { box-shadow: 0 0 0 16px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+    .tag__card {
+      background: var(--white); padding: 11px 16px;
+      font-size: 14px; line-height: 1.45; box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      transition: transform .15s ease; white-space: nowrap;
+    }
+    .tag__card strong { display: block; font-weight: 700; }
+    .tag:hover .tag__card { transform: translateY(-2px); }
+
+    /* Fila inferior: titular */
+    .hero__content { position: relative; z-index: 2; padding: 0 var(--gutter) 40px; }
+    .hero__title { font-size: clamp(44px, 12.5vw, 132px); line-height: .95; color: var(--rose); text-shadow: 0 2px 30px rgba(0,0,0,.25); }
+    .br-desk { display: none; }
+    .scroll-hint {
+      display: inline-flex; align-items: center; gap: 8px; margin-top: 22px;
+      font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--white); text-decoration: none; opacity: .85;
+    }
+    .scroll-hint svg { animation: bob 1.8s ease-in-out infinite; }
+    @keyframes bob { 50% { transform: translateY(4px); } }
+
+    /* ========== 2 · FRANJA DE OFERTA ========== */
+    .offer {
+      display: block; padding: 18px var(--gutter);
+      background: var(--black); color: var(--white);
+      text-align: center; text-decoration: none; font-weight: 700; font-size: 15px; line-height: 1.35;
+    }
+    .offer:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+    /* ========== 3 · NEW (vídeos) ==========
+       Móvil: carrusel deslizable. Escritorio: tres columnas.
+       Al hacer scroll, las tarjetas entran desde la derecha una tras otra. */
+    .new { padding: 64px 0 72px; overflow: hidden; }
+    .videos {
+      display: flex; gap: 14px;
+      overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 8px;
+      scrollbar-width: none;
+    }
+    .videos::-webkit-scrollbar { display: none; }
+    .vcard { position: relative; flex: 0 0 78%; aspect-ratio: 4 / 5; scroll-snap-align: start; }
+    .vcard .ph { position: absolute; inset: 0; }
+    .vcard .ph::before { top: 16px; left: 16px; transform: none; }
+    .vcard__name {
+      position: absolute; z-index: 2; left: 0; right: 0; bottom: 0;
+      padding: 40px 18px 16px; color: var(--white); font-weight: 700; font-size: 18px;
+      background: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,0));
+      pointer-events: none;
+    }
+    /* Botones de las tarjetas de vídeo */
+    .vcard video { transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+    .vcard:hover video { transform: scale(1.04); }
+    .vcard__open { position: absolute; inset: 0; z-index: 3; width: 100%; background: none; border: 0; padding: 0; cursor: pointer; }
+    .vcard__name { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .vcard__price { font-weight: 600; font-size: 16px; }
+    .vcard__more {
+      position: absolute; z-index: 2; left: 18px; top: 18px;
+      background: var(--white); color: var(--black); padding: 7px 12px; font-size: 13px; font-weight: 700;
+      opacity: 0; transform: translateY(-6px); transition: opacity .25s ease, transform .25s ease; pointer-events: none;
+    }
+    .vcard:hover .vcard__more, .vcard__open:focus-visible ~ .vcard__more { opacity: 1; transform: none; }
+    .vcard__cart {
+      position: absolute; z-index: 4; top: 14px; right: 14px;
+      width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+      background: var(--white); color: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,.18); transition: transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .vcard__cart:hover { transform: scale(1.08); background: var(--rose); }
+    .vcard__plus {
+      position: absolute; top: 6px; right: 6px; width: 16px; height: 16px; border-radius: 50%;
+      background: var(--rose); color: var(--black); font-size: 13px; font-weight: 800; line-height: 16px; text-align: center;
+    }
+    .vcard__cart:hover .vcard__plus { background: var(--black); color: var(--white); }
+    .vcard__cart.is-added { background: var(--black); color: var(--white); }
+    .vcard__cart.is-added .vcard__plus { display: none; }
+
+    .swipe-hint { font-size: 13px; color: var(--grey-text); margin-top: 14px; }
+
+    /* Animación de entrada desde la derecha */
+    .js .reveal-right {
+      opacity: 0; transform: translateX(120px);
+      transition: opacity .8s ease, transform .9s cubic-bezier(.2, .7, .2, 1);
+      transition-delay: calc(var(--i, 0) * 150ms);
+    }
+    .js .reveal-right.is-in { opacity: 1; transform: none; }
+
+    /* ========== 4 · BENEFICIOS (a sangre) ========== */
+    .benefits { display: grid; grid-template-columns: 1fr; }
+    .benefit .ph { aspect-ratio: 16 / 10; }
+    .benefit__bar { height: 8px; }
+    .benefit__text { padding: 20px var(--gutter) 32px; }
+    .benefit { position: relative; display: block; color: var(--black); }
+    .benefit__open {
+      background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; text-align: left; cursor: pointer;
+    }
+    .benefit__open::after { content: ""; position: absolute; inset: 0; }
+    .benefit__open:focus-visible { outline: none; }
+    .benefit:has(.benefit__open:focus-visible) { outline: 3px solid var(--blue); outline-offset: -3px; }
+    .benefit .ph img { transition: transform .6s cubic-bezier(.2, .7, .2, 1); }
+    .benefit:hover .ph img, .benefit:focus-within .ph img { transform: scale(1.05); }
+    .benefit h3 { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+    .benefit .arrow { display: inline-block; transition: transform .25s ease; }
+    .benefit:hover h3, .benefit:focus-within h3 { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 2px; }
+    .benefit:hover .arrow, .benefit:focus-within .arrow { transform: translateX(6px); }
+    .benefit p { color: var(--grey-text); font-size: 16px; }
+
+    /* ========== 5 · HECHO CON CARÁCTER ==========
+       Móvil: línea de tiempo vertical. Escritorio: cuatro pasos en fila. */
+    .craft { background: var(--grey-bg); padding: 64px 0 56px; }
+    .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+    .step { display: grid; grid-template-columns: 36px 1fr; column-gap: 16px; }
+    .step__num { grid-row: 1 / span 3; display: flex; flex-direction: column; align-items: center; }
+    .step__num span {
+      width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--black);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; flex: none; background: var(--grey-bg);
+    }
+    .step__num::after { content: ""; flex: 1; width: 1px; background: rgba(0,0,0,.45); }
+    .step:last-child .step__num::after { background: linear-gradient(rgba(0,0,0,.45), transparent); }
+    .step .ph { aspect-ratio: 16 / 10; }
+    .step h3 { font-size: 19px; font-weight: 700; margin: 16px 0 6px; }
+    .step p { color: var(--grey-text); font-size: 16px; max-width: 34ch; padding-bottom: 36px; }
+
+    .final { position: relative; display: block; margin: 24px auto 0; max-width: 1060px; overflow: hidden; text-decoration: none; }
+    .final .ph { aspect-ratio: 4 / 3; }
+    .final .ph img { transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
+    .final::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 32%; z-index: 1; pointer-events: none;
+      background: linear-gradient(to top, rgba(0,0,0,.6) 0%, rgba(0,0,0,.25) 50%, rgba(0,0,0,0) 100%);
+    }
+    .final__label {
+      position: absolute; z-index: 2; left: 18px; bottom: 16px;
+      color: var(--white); font-weight: 700; font-size: 20px;
+      text-shadow: 0 1px 12px rgba(0,0,0,.35);
+    }
+    .final .arrow { display: inline-block; margin-left: 4px; transition: transform .25s ease; }
+    .final:hover .ph img, .final:focus-visible .ph img { transform: scale(1.03); }
+    .final:hover .final__label, .final:focus-visible .final__label { text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 2px; }
+    .final:hover .arrow, .final:focus-visible .arrow { transform: translateX(6px); }
+    .origin {
+      background: var(--black); color: var(--white);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 22px var(--gutter); font-weight: 700; font-size: 15px; text-align: left;
+    }
+    .origin svg { flex: none; }
+
+    /* ========== 6 · PRUEBA SOCIAL (polaroids) ========== */
+    .social { padding: 64px 0 80px; }
+    .ig-grid { display: grid; gap: 28px 16px; grid-template-columns: 1fr 1fr; padding: 8px 4px 0; }
+    .polaroid {
+      display: block; text-decoration: none; color: var(--black);
+      background: var(--white); padding: 8px 8px 0;
+      border: 1px solid #ECECE8;
+      box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 14px 30px rgba(0,0,0,.12);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .polaroid:hover, .polaroid:focus-visible {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 22px 40px rgba(0,0,0,.18);
+    }
+    .polaroid .ph { aspect-ratio: 1 / 1; }
+    .polaroid figcaption {
+      font-size: 14px; font-weight: 700; line-height: 1.2; padding: 12px 2px 14px;
+    }
+
+    /* ========== 7 · FORMULARIO ========== */
+    .signup { background: var(--grey-form); padding: 64px 0; }
+    .signup__grid { display: grid; gap: 32px; grid-template-columns: 1fr; align-items: center; }
+    .signup__title { font-size: clamp(44px, 7vw, 92px); margin-bottom: 18px; }
+    .signup__lead { color: var(--grey-text); font-size: 17px; max-width: 34ch; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+    .field input {
+      width: 100%; min-height: 54px; padding: 14px 16px;
+      font: inherit; font-size: 16px; color: var(--black); background: var(--white);
+      border: 1px solid #8f8f8a; border-radius: 0;
+    }
+    .field input:focus { border-color: var(--black); outline: none; box-shadow: 0 0 0 3px rgba(85,104,175,.35); }
+    .field input[aria-invalid="true"] { border-color: #C4122F; }
+    .error { color: #C4122F; font-size: 13px; margin-top: 6px; min-height: 1em; }
+    .check { display: flex; gap: 12px; align-items: center; font-size: 15px; margin: 4px 0 6px; }
+    .check input { width: 22px; height: 22px; flex: none; margin: 0; accent-color: var(--rose); }
+    .check a { text-underline-offset: 3px; }
+    .form-note { font-size: 12px; color: var(--grey-text); margin-top: 14px; }
+    .success { padding: 24px 0; }
+    .success h3 { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 32px; margin-bottom: 10px; }
+    [hidden] { display: none !important; }
+
+    /* ========== 8 · FOOTER ========== */
+    footer { padding: 32px 0 110px; }
+    .footer__row { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+    .footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px; }
+    .footer__links a {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 700; font-size: 15px; text-decoration: none;
+    }
+    .footer__links a:hover { text-decoration: underline; }
+    .footer__social { gap: 8px; }
+    .footer__links .social-icon { width: 44px; height: 44px; justify-content: center; transition: color .15s ease, transform .15s ease; }
+    .footer__links .social-icon:hover { color: var(--rose); transform: translateY(-2px); }
+    .disclaimer { margin-top: 24px; font-size: 12px; color: var(--grey-text); text-align: center; }
+
+    /* Botón fijo en móvil */
+    .sticky-cta {
+      position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 50; width: auto;
+      transform: translateY(160%); transition: transform .25s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    .sticky-cta.is-visible { transform: translateY(0); }
+
+    /* Pop-up de intención de salida (red del trapecista) */
+    .exit {
+      position: fixed; inset: 0; z-index: 100; background: rgba(17,17,17,.6);
+      display: flex; align-items: center; justify-content: center; padding: 20px;
+    }
+    .exit__box { position: relative; background: var(--white); padding: 48px 36px; max-width: 460px; text-align: center; }
+    .exit__box h2 { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 34px; line-height: 1.05; margin-bottom: 14px; }
+    .exit__box p { color: var(--grey-text); margin-bottom: 26px; }
+    .exit__close { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border: 0; background: none; font-size: 28px; cursor: pointer; }
+
+    /* Contador de la cesta */
+    .cart-link { position: relative; }
+    .cart-badge {
+      position: absolute; top: 2px; right: 0; min-width: 19px; height: 19px; padding: 0 5px; border-radius: 10px;
+      background: var(--rose); color: var(--black); font-size: 11px; font-weight: 800; line-height: 19px; text-align: center;
+    }
+    .cart-badge.is-bump { animation: bump .45s ease; }
+    @keyframes bump { 40% { transform: scale(1.35); } }
+    .promo-code { background: var(--black); color: var(--white); padding: 2px 8px; letter-spacing: .06em; }
+
+    /* ========== VENTANAS EMERGENTES (ficha de producto, carrusel y mini-cesta) ========== */
+    html.is-locked { overflow: hidden; }
+    dialog { padding: 0; border: 0; color: var(--black); background: var(--white); }
+    dialog::backdrop { background: rgba(17,17,17,.6); }
+
+    .pmodal { width: min(1080px, calc(100% - 48px)); max-width: none; max-height: calc(100vh - 48px); overflow: hidden; }
+    .pmodal[open] { animation: pop-in .35s cubic-bezier(.2, .7, .2, 1); }
+    @keyframes pop-in { from { opacity: 0; transform: translateY(18px) scale(.98); } }
+    .pmodal__grid { display: grid; grid-template-columns: 1.05fr 1fr; height: min(700px, calc(100vh - 48px)); }
+    .pmodal__media { position: relative; overflow: hidden; background: var(--grey-ph); }
+    .pmodal__media .ph { position: absolute; inset: 0; }
+    .pmodal__info { overflow-y: auto; padding: 48px 44px 40px; display: flex; flex-direction: column; }
+    .pmodal__body.is-switching { animation: slide-fade .4s cubic-bezier(.2, .7, .2, 1); }
+    .pmodal__media .ph.is-switching { animation: slide-fade .45s cubic-bezier(.2, .7, .2, 1); }
+    @keyframes slide-fade { from { opacity: 0; transform: translateX(var(--dir, 24px)); } }
+
+    .pmodal__eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; padding-right: 48px; }
+    .pmodal__eyebrow::before { content: ""; width: 28px; height: 4px; background: var(--accent, var(--rose)); flex: none; }
+    .pmodal__count { margin-left: auto; color: var(--grey-text); letter-spacing: .06em; }
+    .pmodal__name { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: clamp(30px, 3.2vw, 42px); line-height: 1.02; letter-spacing: -.02em; margin: 16px 0 14px; }
+    .pmodal__price { font-size: 22px; font-weight: 700; }
+    .pmodal__color { color: var(--grey-text); font-size: 15px; margin-top: 2px; }
+    .pmodal__desc { color: var(--grey-text); margin: 18px 0 24px; }
+    .pmodal__buy { margin-bottom: 26px; }
+    .pmodal__buy .btn { gap: 12px; }
+    .pmodal__buy .btn.is-added { background: var(--black); color: var(--white); }
+    .pmodal__ship { font-size: 13px; color: var(--grey-text); margin-top: 10px; }
+
+    .acc { border-top: 1px solid #E2E2DE; }
+    .acc:last-child { border-bottom: 1px solid #E2E2DE; }
+    .acc summary {
+      list-style: none; cursor: pointer; padding: 17px 0; font-weight: 700;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .acc summary::-webkit-details-marker { display: none; }
+    .acc summary::after { content: "+"; font-size: 24px; font-weight: 400; line-height: 1; }
+    .acc[open] summary::after { content: "−"; }
+    .acc ul { margin: 0 0 18px; padding-left: 18px; color: var(--grey-text); }
+    .acc li + li { margin-top: 4px; }
+
+    .pmodal__close, .pmodal__nav {
+      position: absolute; z-index: 6; border: 0; cursor: pointer; background: var(--white); color: var(--black);
+      display: flex; align-items: center; justify-content: center; border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0,0,0,.18); transition: transform .2s ease, background .2s ease;
+    }
+    .pmodal__close { top: 14px; right: 14px; width: 44px; height: 44px; }
+    .pmodal__nav { top: 50%; width: 54px; height: 54px; transform: translateY(-50%); }
+    .pmodal__nav[hidden] { display: none; }
+    .pmodal__nav--prev { left: 16px; }
+    .pmodal__nav--next { right: 16px; }
+    .pmodal__nav:hover { transform: translateY(-50%) scale(1.08); background: var(--rose); }
+    .pmodal__close:hover { transform: scale(1.06); }
+    .pmodal__dots { position: absolute; z-index: 5; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; gap: 8px; }
+    .pmodal__dot { width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; cursor: pointer; background: rgba(255,255,255,.55); box-shadow: 0 0 0 1px rgba(0,0,0,.15); }
+    .pmodal__dot[aria-current="true"] { background: var(--white); transform: scale(1.25); }
+
+    /* Mini-cesta lateral */
+    .drawer {
+      margin: 0 0 0 auto; height: 100%; max-height: 100%; width: min(440px, 100%); max-width: 100%;
+      flex-direction: column;
+    }
+    .drawer[open] { display: flex; animation: slide-in .38s cubic-bezier(.2, .7, .2, 1); }
+    @keyframes slide-in { from { transform: translateX(100%); } }
+    .drawer__head { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; border-bottom: 1px solid #E2E2DE; }
+    .drawer__head h2 { font-family: "Archivo Black", sans-serif; font-weight: 400; font-size: 26px; }
+    .drawer__close { width: 44px; height: 44px; border: 0; background: none; cursor: pointer; font-size: 28px; line-height: 1; }
+    .drawer__added {
+      display: flex; align-items: center; gap: 10px; margin: 18px 24px 0; padding: 12px 14px;
+      background: var(--black); color: var(--white); font-weight: 700; font-size: 15px;
+    }
+    .drawer__added svg { flex: none; color: var(--rose); }
+    .drawer__list { flex: 1; overflow-y: auto; list-style: none; margin: 0; padding: 6px 24px; }
+    .drawer__empty { padding: 40px 0; color: var(--grey-text); text-align: center; }
+    .citem { display: grid; grid-template-columns: 76px 1fr auto; gap: 14px; padding: 16px 0; border-bottom: 1px solid #EDEDEA; align-items: start; }
+    .citem__thumb { width: 76px; aspect-ratio: 4 / 5; background: var(--grey-ph); overflow: hidden; }
+    .citem__thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .citem__name { font-weight: 700; font-size: 15px; line-height: 1.3; }
+    .citem__meta { color: var(--grey-text); font-size: 13px; margin-top: 3px; }
+    .citem__price { font-weight: 700; font-size: 15px; white-space: nowrap; }
+    .citem__remove { background: none; border: 0; padding: 0; margin-top: 8px; font: inherit; font-size: 13px; color: var(--grey-text); text-decoration: underline; cursor: pointer; }
+    .citem__remove:hover { color: var(--black); }
+    .drawer__foot { border-top: 1px solid #E2E2DE; padding: 18px 24px 24px; }
+    .ship-note { font-size: 13px; color: var(--grey-text); }
+    .ship-bar { height: 4px; background: #E7E7E3; margin: 8px 0 16px; }
+    .ship-bar span { display: block; height: 100%; width: 0; background: var(--rose); transition: width .4s ease; }
+    .drawer__total { display: flex; justify-content: space-between; font-weight: 800; font-size: 18px; margin-bottom: 16px; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; margin-top: 10px;
+      background: none; border: 1.5px solid var(--black); color: var(--black); font: inherit; font-weight: 700; cursor: pointer;
+    }
+    .btn-ghost:hover { background: var(--black); color: var(--white); }
+
+    @media (max-width: 859px) {
+      .pmodal { width: 100%; height: 100%; max-width: 100%; max-height: 100%; margin: 0; overflow-y: auto; }
+      .pmodal[open] { animation: fade-in .25s ease; }
+      @keyframes fade-in { from { opacity: 0; } }
+      .pmodal__grid { grid-template-columns: 1fr; height: auto; }
+      .pmodal__media { height: 58vh; height: 58svh; }
+      .pmodal__info { overflow: visible; padding: 24px 20px 0; }
+      .pmodal__close { position: fixed; }
+      .pmodal__eyebrow { padding-right: 0; }
+      .pmodal__nav { width: 46px; height: 46px; }
+      .pmodal__nav--prev { left: 12px; }
+      .pmodal__nav--next { right: 12px; }
+      .pmodal__buy {
+        position: sticky; bottom: 0; z-index: 4;
+        margin: 0 -20px 20px; padding: 12px 20px; background: var(--white); box-shadow: 0 -8px 20px rgba(0,0,0,.06);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .tag__dot::before, .scroll-hint svg { animation: none; }
+      .js .reveal-right { transform: none; transition: opacity .4s ease; }
+    }
+
+    /* ===== Tablet (768 px o más) ===== */
+    @media (min-width: 768px) {
+      :root { --gutter: 40px; }
+      .section-title { margin-bottom: 40px; }
+      .new, .social { padding: 88px 0 96px; }
+      .videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; overflow: visible; margin: 0; padding: 0; }
+      .vcard { flex: none; }
+      .swipe-hint { display: none; }
+      .benefits { grid-template-columns: repeat(3, 1fr); }
+      .benefit .ph { aspect-ratio: 3 / 2; }
+      .benefit__text { padding: 26px 24px 44px; }
+      .craft { padding: 88px 0 72px; }
+      .steps { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
+      .step { grid-template-columns: 1fr; }
+      .step__num { grid-row: auto; flex-direction: row; margin-bottom: 20px; }
+      .step__num::after { width: auto; height: 1px; }
+      .step:last-child .step__num::after { background: rgba(0,0,0,.45); }
+      .step .ph { aspect-ratio: 5 / 4; }
+      .step p { padding-bottom: 0; }
+      .final { margin-top: 64px; }
+      .final .ph { aspect-ratio: 16 / 9; }
+      .final__label { left: 32px; bottom: 28px; font-size: 26px; }
+      .origin { font-size: 17px; padding: 26px var(--gutter); }
+      .ig-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+      .polaroid { padding: 12px 12px 0; }
+      .polaroid figcaption { font-size: 15px; padding: 16px 2px 20px; }
+      .signup { padding: 88px 0; }
+      .offer { font-size: 18px; padding: 22px var(--gutter); }
+      .sticky-cta { display: none; }
+      footer { padding-bottom: 40px; }
+      .footer__row { flex-direction: row; justify-content: space-between; }
+      .disclaimer { text-align: left; }
+    }
+
+    /* ===== Escritorio (1100 px o más) ===== */
+    @media (min-width: 1100px) {
+      :root { --gutter: 56px; }
+      .topbar { padding: 26px var(--gutter); }
+      .logo { font-size: 30px; }
+      .nav { display: flex; }
+      .icons { gap: 18px; }
+      .menu-toggle, .mobile-menu { display: none !important; }
+      .hero__stage { justify-content: flex-start; padding-left: var(--tag-x); }
+      .hero__content { padding-bottom: 64px; }
+      .br-desk { display: inline; }
+      .scroll-hint { display: none; }
+      .steps { grid-template-columns: repeat(4, 1fr); gap: 32px; }
+      .signup__grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+      .signup__form { justify-self: end; width: 100%; max-width: 560px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== 1 · HERO ========== -->
+  <header class="hero" id="inicio">
+    <div class="ph" data-label="Imagen · bolso de color">
+      <img src="Img/hero.jpg" alt="Bolso Chimo de la nueva colección de Bimba y Lola" onerror="this.remove()">
+    </div>
+
+    <div class="topbar">
+      <a class="logo" href="#inicio" aria-label="Bimba y Lola, inicio">BIMBA Y LOLA</a>
+
+      <nav class="nav" aria-label="Menú principal">
+        <a href="#coleccion">New</a>
+        <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Bolsos</a>
+        <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Ropa</a>
+        <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Zapatos</a>
+        <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Accesorios</a>
+        <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Special prices</a>
+        <a class="nav__next" href="#registro" data-track="nav_whats_next_click">What's next?</a>
+      </nav>
+
+      <div class="icons">
+        <a class="icon-btn cart-link" href="carrito.html" aria-label="Cesta">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+          <span class="cart-badge" data-cart-count hidden>0</span>
+        </a>
+        <a class="icon-btn" href="https://www.bimbaylola.com/" target="_blank" rel="noopener" aria-label="Mi cuenta">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        </a>
+        <button class="icon-btn menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Menú móvil" hidden>
+      <a href="#coleccion">New</a>
+      <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Bolsos</a>
+      <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Ropa</a>
+      <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Zapatos</a>
+      <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Accesorios</a>
+      <a href="https://www.bimbaylola.com/" target="_blank" rel="noopener">Special prices</a>
+      <a href="#registro" data-track="nav_whats_next_click">What's next?</a>
+    </nav>
+
+    <!-- Etiqueta de producto: abre la ficha del Bolso Chimo -->
+    <div class="hero__stage">
+      <button class="tag" type="button" data-product="chimo" data-track="product_tag_click">
+        <span class="tag__dot" aria-hidden="true"></span>
+        <span class="tag__card">
+          Bolso Chimo · 275 €
+          <strong>Ver bolso →</strong>
+        </span>
+      </button>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__title display">Que tu bolso <br class="br-desk">hable por ti</h1>
+      <a class="scroll-hint" href="#oferta" aria-label="Bajar a la oferta">
+        Desliza
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== 2 · FRANJA DE OFERTA ========== -->
+  <a class="offer" id="oferta" href="#registro" data-track="offer_strip_click">Descubre lo nuevo antes que nadie y llévate un 10%&nbsp;→</a>
+
+  <main>
+    <!-- ========== 3 · NEW ========== -->
+    <section class="new" id="coleccion">
+      <div class="container">
+        <h2 class="section-title display">New</h2>
+        <div class="videos">
+          <article class="vcard reveal-right" style="--i:0">
+            <div class="ph" data-label="Video bolso Pocket">
+              <video src="Video/bolso-pocket.mp4" poster="Img/bolso-pocket.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture onerror="this.remove()"></video>
+            </div>
+            <button class="vcard__open" type="button" data-product="pocket" aria-label="Ver detalles del Bolso Pocket"></button>
+            <h3 class="vcard__name"><span>Bolso Pocket</span><span class="vcard__price">129 €</span></h3>
+            <span class="vcard__more" aria-hidden="true">Ver detalles →</span>
+            <button class="vcard__cart" type="button" data-add="pocket" aria-label="Añadir Bolso Pocket a la cesta">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg><span class="vcard__plus" aria-hidden="true">+</span>
+            </button>
+          </article>
+          <article class="vcard reveal-right" style="--i:1">
+            <div class="ph" data-label="Video bolso Chimo">
+              <video src="Video/bolso-chimo.mp4" poster="Img/bolso-chimo.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture onerror="this.remove()"></video>
+            </div>
+            <button class="vcard__open" type="button" data-product="chimo" aria-label="Ver detalles del Bolso Chimo"></button>
+            <h3 class="vcard__name"><span>Bolso Chimo</span><span class="vcard__price">275 €</span></h3>
+            <span class="vcard__more" aria-hidden="true">Ver detalles →</span>
+            <button class="vcard__cart" type="button" data-add="chimo" aria-label="Añadir Bolso Chimo a la cesta">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg><span class="vcard__plus" aria-hidden="true">+</span>
+            </button>
+          </article>
+          <article class="vcard reveal-right" style="--i:2">
+            <div class="ph" data-label="Video bolso Moon">
+              <video src="Video/bolso-moon.mp4" poster="Img/bolso-moon.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture onerror="this.remove()"></video>
+            </div>
+            <button class="vcard__open" type="button" data-product="moon" aria-label="Ver detalles del Bolso Moon"></button>
+            <h3 class="vcard__name"><span>Bolso Moon</span><span class="vcard__price">195 €</span></h3>
+            <span class="vcard__more" aria-hidden="true">Ver detalles →</span>
+            <button class="vcard__cart" type="button" data-add="moon" aria-label="Añadir Bolso Moon a la cesta">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg><span class="vcard__plus" aria-hidden="true">+</span>
+            </button>
+          </article>
+        </div>
+        <p class="swipe-hint">Desliza para ver más →</p>
+      </div>
+    </section>
+
+    <!-- ========== 4 · BENEFICIOS (cada uno abre un carrusel de 3 productos; los productos están en el catálogo del script) ========== -->
+    <section class="benefits" aria-label="Beneficios">
+      <article class="benefit">
+        <div class="ph" data-label="Imagen 1"><img src="Img/beneficio-1.jpg" alt="Look con un estampado llamativo" loading="lazy" onerror="this.remove()"></div>
+        <div class="benefit__bar" style="background: var(--blue)"></div>
+        <div class="benefit__text">
+          <h3><button class="benefit__open" type="button" data-collection="estampados" data-track="benefit_destaca">Destaca sin esfuerzo <span class="arrow" aria-hidden="true">→</span></button></h3>
+          <p>Un print basta para cambiar tu look</p>
+        </div>
+      </a>
+      <article class="benefit">
+        <div class="ph" data-label="Imagen 2"><img src="Img/beneficio-2.jpg" alt="Prendas y bolsos combinados entre sí" loading="lazy" onerror="this.remove()"></div>
+        <div class="benefit__bar" style="background: var(--lime)"></div>
+        <div class="benefit__text">
+          <h3><button class="benefit__open" type="button" data-collection="basicos" data-track="benefit_combina">Combina con todo <span class="arrow" aria-hidden="true">→</span></button></h3>
+          <p>Piezas pensadas para mezclarse</p>
+        </div>
+      </a>
+      <article class="benefit">
+        <div class="ph" data-label="Imagen 3"><img src="Img/beneficio-3.jpg" alt="Look atrevido con un bolso de color" loading="lazy" onerror="this.remove()"></div>
+        <div class="benefit__bar" style="background: var(--rose)"></div>
+        <div class="benefit__text">
+          <h3><button class="benefit__open" type="button" data-collection="coloridos" data-track="benefit_pruebatelo">Pruébatelo en casa <span class="arrow" aria-hidden="true">→</span></button></h3>
+          <p>Moda para arriesgar</p>
+        </div>
+      </a>
+    </section>
+
+    <!-- ========== 5 · HECHO CON CARÁCTER ========== -->
+    <section class="craft" id="caracter">
+      <div class="container">
+        <p class="eyebrow">Hecho con carácter</p>
+        <h2 class="section-title display">Así nace cada bolso</h2>
+        <ol class="steps">
+          <li class="step">
+            <div class="step__num"><span>01</span></div>
+            <div class="ph" data-label="Imagen inspiración"><img src="Img/proceso-inspiracion.jpg" alt="Panel de inspiración con colores y referencias" loading="lazy" onerror="this.remove()"></div>
+            <h3>Inspiración</h3>
+            <p>Todo empieza con una idea, un color o un recuerdo</p>
+          </li>
+          <li class="step">
+            <div class="step__num"><span>02</span></div>
+            <div class="ph" data-label="Imagen boceto"><img src="Img/proceso-boceto.jpg" alt="Boceto a mano de un bolso" loading="lazy" onerror="this.remove()"></div>
+            <h3>Boceto</h3>
+            <p>El equipo de diseño lo dibuja a mano</p>
+          </li>
+          <li class="step">
+            <div class="step__num"><span>03</span></div>
+            <div class="ph" data-label="Imagen estampado"><img src="Img/proceso-estampado.jpg" alt="Estampado propio sobre tejido" loading="lazy" onerror="this.remove()"></div>
+            <h3>Estampado</h3>
+            <p>Creamos el print que lo hace único</p>
+          </li>
+          <li class="step">
+            <div class="step__num"><span>04</span></div>
+            <div class="ph" data-label="Imagen muestra"><img src="Img/proceso-muestra.jpg" alt="Muestra del bolso en el taller" loading="lazy" onerror="this.remove()"></div>
+            <h3>Muestra</h3>
+            <p>Probamos, ajustamos y lo perfeccionamos</p>
+          </li>
+        </ol>
+
+        <!-- "Tu bolso": cambia el href por la ficha real del bolso de la foto -->
+        <a class="final" href="https://www.bimbaylola.com/" target="_blank" rel="noopener" data-track="final_bag_click">
+          <div class="ph" data-label="Imagen del bolso terminado"><img src="Img/proceso-final.jpg" alt="" loading="lazy" onerror="this.remove()"></div>
+          <span class="final__label">Tu bolso <span class="arrow" aria-hidden="true">→</span></span>
+        </a>
+      </div>
+    </section>
+
+    <div class="origin">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.3" fill="currentColor"/></svg>
+      Diseñado en Galicia, España. Desde 2005.
+    </div>
+
+    <!-- ========== 6 · PRUEBA SOCIAL (polaroids) ========== -->
+    <section class="social" id="comunidad">
+      <div class="container">
+        <h2 class="section-title display">Ellas ya se atreven</h2>
+        <div class="ig-grid">
+          <figure class="polaroid" tabindex="0">
+            <div class="ph" data-label="Foto 1"><img src="Img/ig-1.jpg" alt="Clienta con su bolso Bimba y Lola" loading="lazy" onerror="this.remove()"></div>
+            <figcaption>@maria.pr</figcaption>
+          </figure>
+          <figure class="polaroid" tabindex="0">
+            <div class="ph" data-label="Foto 2"><img src="Img/ig-2.jpg" alt="Clienta con su bolso Bimba y Lola" loading="lazy" onerror="this.remove()"></div>
+            <figcaption>@luciafg</figcaption>
+          </figure>
+          <figure class="polaroid" tabindex="0">
+            <div class="ph" data-label="Foto 3"><img src="Img/ig-3.jpg" alt="Clienta con su bolso Bimba y Lola" loading="lazy" onerror="this.remove()"></div>
+            <figcaption>@inestudio</figcaption>
+          </figure>
+          <figure class="polaroid" tabindex="0">
+            <div class="ph" data-label="Foto 4"><img src="Img/ig-4.jpg" alt="Clienta con su bolso Bimba y Lola" loading="lazy" onerror="this.remove()"></div>
+            <figcaption>@clara.jpg</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 7 · FORMULARIO ========== -->
+    <section class="signup" id="registro">
+      <div class="container signup__grid">
+        <div>
+          <p class="eyebrow">Acceso anticipado</p>
+          <h2 class="signup__title display">Sé la primera</h2>
+          <p class="signup__lead">Apúntate y descubre las colecciones antes que nadie. Disfruta de un 10% de descuento en tu primera compra siendo parte del Lolita Team.</p>
+        </div>
+
+        <div class="signup__form">
+          <!-- FORMULARIO: sustituye TU_CODIGO por el código de tu formulario de Formspree -->
+          <form id="lead-form" action="https://formspree.io/f/TU_CODIGO" method="POST" novalidate>
+            <div class="field">
+              <label for="nombre">Nombre</label>
+              <input id="nombre" name="nombre" type="text" autocomplete="given-name" required>
+              <p class="error" id="error-nombre" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required>
+              <p class="error" id="error-email" aria-live="polite"></p>
+            </div>
+            <label class="check">
+              <input id="privacidad" name="privacidad" type="checkbox" value="acepto" required>
+              <span>Acepto la <a href="#">política de privacidad</a></span>
+            </label>
+            <p class="error" id="error-privacidad" aria-live="polite" style="margin-bottom:20px"></p>
+            <input type="hidden" name="_subject" value="Nuevo registro · Landing Bimba y Lola">
+            <button class="btn btn--block" type="submit">Quiero mi 10&nbsp;% <span aria-hidden="true">→</span></button>
+            <p class="form-note">Proyecto académico: los datos solo se usan para probar este formulario.</p>
+          </form>
+
+          <div class="success" id="form-success" hidden tabindex="-1">
+            <h3>¡Ya eres Lolita Team!</h3>
+            <p>Tu código del 10&nbsp;% es <strong class="promo-code">LOLITA10</strong>. Úsalo en la cesta; también te lo hemos enviado por email.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== 8 · FOOTER ========== -->
+  <footer>
+    <div class="container">
+      <div class="footer__row">
+        <nav class="footer__links footer__social" aria-label="Redes sociales">
+          <a class="social-icon" href="https://www.instagram.com/bimbaylola/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="26" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="social-icon" href="https://www.tiktok.com/@bimbaylola" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.8 2.2 4.6 5 5"/></svg>
+          </a>
+        </nav>
+        <nav class="footer__links" aria-label="Textos legales">
+          <a href="#">Aviso legal</a>
+          <a href="#">Privacidad</a>
+          <a href="#">Cookies</a>
+        </nav>
+      </div>
+      <p class="disclaimer">Proyecto académico no oficial · Máster en Marketing Digital, ESIC Business &amp; Marketing School. Sin relación comercial con Bimba y Lola; marca e imágenes pertenecen a sus titulares.</p>
+    </div>
+  </footer>
+
+  <!-- Botón fijo en móvil -->
+  <a class="btn sticky-cta" href="#registro" id="sticky-cta" data-track="cta_click" aria-hidden="true" tabindex="-1">Quiero mi 10&nbsp;% <span aria-hidden="true">→</span></a>
+
+  <!-- ========== FICHA DE PRODUCTO / CARRUSEL (se rellena desde el catálogo del script) ========== -->
+  <dialog class="pmodal" id="product-modal" aria-labelledby="pm-name">
+    <button class="pmodal__close" type="button" data-close aria-label="Cerrar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="pmodal__grid">
+      <div class="pmodal__media" id="pm-media">
+        <div class="ph" id="pm-ph"></div>
+        <button class="pmodal__nav pmodal__nav--prev" type="button" id="pm-prev" aria-label="Producto anterior">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <button class="pmodal__nav pmodal__nav--next" type="button" id="pm-next" aria-label="Producto siguiente">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <div class="pmodal__dots" id="pm-dots"></div>
+      </div>
+      <div class="pmodal__info">
+        <div class="pmodal__body" id="pm-body"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ========== MINI-CESTA (aparece al añadir un producto) ========== -->
+  <dialog class="drawer" id="cart-drawer" aria-labelledby="drawer-title">
+    <div class="drawer__head">
+      <h2 id="drawer-title">Tu cesta</h2>
+      <button class="drawer__close" type="button" data-close aria-label="Cerrar la cesta">×</button>
+    </div>
+    <p class="drawer__added" id="drawer-added" hidden>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg>
+      <span id="drawer-added-text">Añadido a tu cesta</span>
+    </p>
+    <ul class="drawer__list" id="drawer-list"></ul>
+    <div class="drawer__foot">
+      <p class="ship-note" id="drawer-ship"></p>
+      <div class="ship-bar" aria-hidden="true"><span id="drawer-ship-bar"></span></div>
+      <p class="drawer__total"><span>Subtotal</span><span id="drawer-total">0,00 €</span></p>
+      <a class="btn btn--block" href="carrito.html" data-track="view_cart">Ver la cesta <span aria-hidden="true">→</span></a>
+      <button class="btn-ghost" type="button" data-close>Seguir comprando</button>
+    </div>
+  </dialog>
+
+  <!-- Pop-up de intención de salida (solo escritorio, una vez por sesión) -->
+  <div class="exit" id="exit-popup" role="dialog" aria-modal="true" aria-labelledby="exit-title" hidden>
+    <div class="exit__box">
+      <button class="exit__close" type="button" aria-label="Cerrar">×</button>
+      <h2 id="exit-title">¿Te vas sin tu 10&nbsp;%?</h2>
+      <p>Únete al Lolita Team en 10 segundos y descubre lo nuevo antes que nadie.</p>
+      <a class="btn" href="#registro" data-track="exit_popup_click">Quiero mi 10&nbsp;% <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+
+  <script>
+    // Envía eventos a Google Analytics 4 (solo si está instalado)
+    function track(name, params) {
+      if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+    }
+    document.querySelectorAll('[data-track]').forEach(function (el) {
+      el.addEventListener('click', function () { track(el.dataset.track); });
+    });
+
+    // ---------- Entrada desde la derecha de "New" ----------
+    var revealEls = document.querySelectorAll('.reveal-right');
+    if ('IntersectionObserver' in window) {
+      var revealObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('is-in'); revealObs.unobserve(en.target); }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      // En el carrusel de móvil, las tarjetas fuera de pantalla se animan junto a la primera
+      var first = document.querySelector('.videos');
+      new IntersectionObserver(function (entries, obs) {
+        if (entries[0].isIntersecting) { revealEls.forEach(function (el) { el.classList.add('is-in'); }); obs.disconnect(); }
+      }, { threshold: 0.2 }).observe(first);
+      revealEls.forEach(function (el) { revealObs.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-in'); });
+    }
+
+    // ---------- Menú móvil ----------
+    var toggle = document.querySelector('.menu-toggle');
+    var mobileMenu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', function () {
+      var open = mobileMenu.hidden;
+      mobileMenu.hidden = !open;
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { mobileMenu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); });
+    });
+
+    // ---------- Vídeos de "New": se reproducen solos y en bucle ----------
+    // Se pausan cuando salen de la pantalla (ahorra batería y datos en móvil) y vuelven a arrancar al verse.
+    var videos = document.querySelectorAll('.vcard video');
+    function playSafe(v) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); }
+    videos.forEach(function (v) { v.muted = true; playSafe(v); });
+    if ('IntersectionObserver' in window) {
+      var vidObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) playSafe(en.target); else en.target.pause(); });
+      }, { threshold: 0.25 });
+      videos.forEach(function (v) { vidObs.observe(v); });
+    }
+
+    // =====================================================================
+    //  CATÁLOGO (precios y datos inventados para el proyecto académico)
+    //  Para cambiar un producto, edita aquí su nombre, precio, foto o textos.
+    // =====================================================================
+    var PRODUCTS = {
+      pocket: {
+        id: 'pocket', name: 'Bolso Pocket', price: 129, color: 'Azul cielo', video: 'Video/bolso-pocket.mp4', img: 'Img/bolso-pocket.jpg',
+        desc: 'Bolso de mano compacto en ante suave, con doble asa y logo metálico en relieve. Pequeño por fuera, sorprendentemente capaz por dentro.',
+        materials: ['Exterior: 100 % piel de vacuno serraje (ante)', 'Forro: 100 % algodón', 'Herrajes: metal con baño dorado'],
+        care: ['No lavar ni sumergir en agua', 'Cepillar en seco con un cepillo para ante', 'Aplicar spray impermeabilizante antes del primer uso', 'Guardar en su funda de algodón, lejos del sol'],
+        measures: ['Alto: 18 cm', 'Ancho: 26 cm', 'Fondo: 11 cm', 'Caída de asa: 12 cm']
+      },
+      chimo: {
+        id: 'chimo', name: 'Bolso Chimo', price: 275, color: 'Marrón chocolate', video: 'Video/bolso-chimo.mp4', img: 'Img/bolso-chimo.jpg',
+        desc: 'Bolso bowling de forma redondeada, con cierre de cremallera y asas firmes. Incluye bandolera para llevarlo cruzado. Una pieza de carácter para todos los días.',
+        materials: ['Exterior: 100 % piel de vacuno', 'Forro: 100 % poliéster reciclado', 'Herrajes: metal con acabado envejecido'],
+        care: ['Limpiar con un paño seco y suave', 'Hidratar la piel con crema incolora cada pocos meses', 'Evitar la lluvia y las fuentes de calor', 'Guardar relleno de papel para que mantenga la forma'],
+        measures: ['Alto: 22 cm', 'Ancho: 34 cm', 'Fondo: 14 cm', 'Caída de asa: 14 cm', 'Bandolera ajustable y extraíble: 110–125 cm']
+      },
+      moon: {
+        id: 'moon', name: 'Bolso Moon', price: 195, color: 'Camel', video: 'Video/bolso-moon.mp4', img: 'Img/bolso-moon.jpg',
+        desc: 'Bolso hobo de ante con tachuelas metálicas en la correa. Amplio, flexible y con una caída natural que se adapta al cuerpo.',
+        materials: ['Exterior: 100 % piel de vacuno serraje (ante)', 'Forro: 100 % algodón', 'Tachuelas: metal plateado'],
+        care: ['Cepillar en seco con un cepillo para ante', 'Tratar las manchas con una goma de borrar para ante', 'No exponer a la lluvia', 'Guardar en su funda de algodón'],
+        measures: ['Alto: 30 cm', 'Ancho: 42 cm', 'Fondo: 12 cm', 'Caída de asa: 24 cm']
+      }
+    };
+
+    var COLLECTIONS = {
+      estampados: {
+        title: 'Destaca sin esfuerzo', accent: 'var(--blue)',
+        items: [
+          { id: 'shopper-leopardo', name: 'Shopper estampado leopardo', price: 159, color: 'Animal print', img: 'Img/estampado-1.jpg',
+            desc: 'Shopper amplio de nylon con estampado de leopardo y asas de piel. Cabe todo, incluido un portátil de 13 pulgadas.',
+            materials: ['Exterior: 100 % poliamida reciclada', 'Asas: 100 % piel de vacuno', 'Forro: 100 % poliéster'],
+            care: ['Limpiar con un paño húmedo y jabón neutro', 'No usar lejía', 'Secar al aire, nunca en secadora'],
+            measures: ['Alto: 32 cm', 'Ancho: 40 cm', 'Fondo: 14 cm', 'Caída de asa: 26 cm'] },
+          { id: 'panuelo-galgos', name: 'Pañuelo estampado galgos', price: 59, color: 'Azul y crudo', img: 'Img/estampado-2.jpg',
+            desc: 'Pañuelo de seda con el galgo de la casa en un estampado propio. Al cuello, en el pelo o anudado al asa del bolso.',
+            materials: ['100 % seda', 'Bordes enrollados y cosidos a mano'],
+            care: ['Limpieza en seco', 'Planchar del revés a baja temperatura'],
+            measures: ['90 × 90 cm'] },
+          { id: 'camisa-floral', name: 'Camisa estampado floral', price: 119, color: 'Multicolor', img: 'Img/estampado-3.jpg',
+            desc: 'Camisa fluida de corte relajado con flores de gran tamaño, dibujadas a mano por el equipo de diseño.',
+            materials: ['100 % viscosa', 'Botones de nácar'],
+            care: ['Lavar a máquina a 30 °C', 'No usar secadora', 'Planchar a temperatura media'],
+            measures: ['Talla S: largo 70 cm', 'Talla M: largo 72 cm', 'Talla L: largo 74 cm', 'La modelo mide 1,76 m y lleva una talla S'] }
+        ]
+      },
+      basicos: {
+        title: 'Combina con todo', accent: 'var(--lime)',
+        items: [
+          { id: 'camiseta-basica', name: 'Camiseta básica de algodón', price: 39, color: 'Blanco', img: 'Img/basico-1.jpg',
+            desc: 'Camiseta de algodón orgánico con cuello redondo y logo bordado tono sobre tono. La base de cualquier look.',
+            materials: ['100 % algodón orgánico'],
+            care: ['Lavar a máquina a 30 °C del revés', 'No usar secadora', 'Planchar a temperatura media'],
+            measures: ['Tallas XS a XL', 'Talla M: largo 66 cm', 'Corte recto'] },
+          { id: 'tote-negro', name: 'Tote de nylon negro', price: 99, color: 'Negro', img: 'Img/basico-2.jpg',
+            desc: 'Tote de nylon acolchado con logo en relieve. El bolso que va con todo, de lunes a domingo.',
+            materials: ['Exterior: 100 % poliamida reciclada', 'Detalles: 100 % piel de vacuno', 'Forro: 100 % poliéster'],
+            care: ['Limpiar con un paño húmedo', 'Secar al aire'],
+            measures: ['Alto: 30 cm', 'Ancho: 38 cm', 'Fondo: 12 cm', 'Caída de asa: 24 cm'] },
+          { id: 'botines-piel', name: 'Botines de piel', price: 189, color: 'Gris perla', img: 'Img/basico-3.jpg',
+            desc: 'Botines de piel con punta fina y tacón kitten. Elegantes con vaqueros, faldas o vestidos.',
+            materials: ['Exterior: 100 % piel de vacuno con acabado brillante', 'Forro: piel', 'Suela: goma'],
+            care: ['Limpiar con un paño seco', 'Aplicar crema incolora para piel', 'Guardar con hormas'],
+            measures: ['Altura del tacón: 4 cm', 'Altura de la caña: 30 cm', 'Horma: normal'] }
+        ]
+      },
+      coloridos: {
+        title: 'Pruébatelo en casa', accent: 'var(--rose)',
+        items: [
+          { id: 'mini-fucsia', name: 'Mini bolso acolchado fucsia', price: 135, color: 'Fucsia', img: 'Img/colorido-1.jpg',
+            desc: 'Mini bolso de piel acolchada en fucsia intenso con cadena dorada. El toque de color que cambia cualquier look.',
+            materials: ['Exterior: 100 % piel de cordero', 'Forro: 100 % poliéster', 'Cadena: metal con baño dorado'],
+            care: ['Limpiar con un paño seco', 'Evitar el roce con prendas vaqueras', 'Guardar en su funda'],
+            measures: ['Alto: 13 cm', 'Ancho: 20 cm', 'Fondo: 6 cm', 'Cadena: 110 cm'] },
+          { id: 'jersey-lima', name: 'Jersey de punto calado', price: 99, color: 'Verde lima', img: 'Img/colorido-2.jpg',
+            desc: 'Jersey de punto calado en verde lima, ligero y con caída. Para llevar sobre un top o con una camiseta básica.',
+            materials: ['60 % algodón', '40 % mohair'],
+            care: ['Lavar a mano en agua fría', 'Secar en horizontal', 'No retorcer'],
+            measures: ['Tallas XS a L', 'Talla M: largo 58 cm', 'Corte amplio'] },
+          { id: 'pendientes-resina', name: 'Pendientes de resina multicolor', price: 45, color: 'Multicolor', img: 'Img/colorido-3.jpg',
+            desc: 'Pendientes de aro hechos con piezas de resina de colores ensambladas a mano. Ligeros y llamativos.',
+            materials: ['Resina', 'Latón con baño de oro de 18 quilates'],
+            care: ['Evitar el agua, el perfume y las cremas', 'Guardar por separado para que no se rayen'],
+            measures: ['Diámetro: 4,5 cm', 'Peso: 8 g por pendiente'] }
+        ]
+      }
+    };
+
+    // ---------- Utilidades ----------
+    function fmt(n) { return n.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' }); }
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    var FREE_SHIPPING = 60;
+
+    // ---------- Bloqueo del scroll mientras hay una ventana abierta ----------
+    function lockScroll() { document.documentElement.classList.add('is-locked'); }
+    function unlockIfNone() { if (!document.querySelector('dialog[open]')) document.documentElement.classList.remove('is-locked'); }
+    document.querySelectorAll('dialog').forEach(function (d) {
+      d.addEventListener('close', unlockIfNone);
+      d.addEventListener('click', function (e) { if (e.target === d) d.close(); });     // clic fuera = cerrar
+      d.querySelectorAll('[data-close]').forEach(function (b) { b.addEventListener('click', function () { d.close(); }); });
+    });
+
+    // =====================================================================
+    //  CESTA (se guarda en el navegador para que la página carrito.html la lea)
+    // =====================================================================
+    var CART_KEY = 'bylCart', memCart = [];
+    function loadCart() {
+      try { var c = JSON.parse(localStorage.getItem(CART_KEY)); return Array.isArray(c) ? c : memCart; }
+      catch (e) { return memCart; }
+    }
+    function saveCart(c) {
+      memCart = c;
+      try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch (e) {}
+      updateBadge();
+    }
+    function cartCount(c) { return c.reduce(function (n, it) { return n + it.qty; }, 0); }
+    function cartTotal(c) { return c.reduce(function (n, it) { return n + it.qty * it.price; }, 0); }
+    function updateBadge(bump) {
+      var n = cartCount(loadCart());
+      document.querySelectorAll('[data-cart-count]').forEach(function (b) {
+        b.textContent = n; b.hidden = n === 0;
+        if (bump) { b.classList.remove('is-bump'); void b.offsetWidth; b.classList.add('is-bump'); }
+      });
+    }
+    function addToCart(p) {
+      var c = loadCart().slice(), found = c.find(function (it) { return it.id === p.id; });
+      if (found) found.qty += 1;
+      else c.push({ id: p.id, name: p.name, price: p.price, color: p.color, img: p.img, qty: 1 });
+      saveCart(c); updateBadge(true);
+      track('add_to_cart', { currency: 'EUR', value: p.price, items: [{ item_id: p.id, item_name: p.name, price: p.price, quantity: 1 }] });
+      openDrawer(p);
+    }
+
+    var drawer = document.getElementById('cart-drawer');
+    function renderDrawer() {
+      var c = loadCart(), list = document.getElementById('drawer-list'), total = cartTotal(c);
+      document.getElementById('drawer-title').textContent = 'Tu cesta (' + cartCount(c) + ')';
+      if (!c.length) {
+        list.innerHTML = '<li class="drawer__empty">Tu cesta está vacía.</li>';
+      } else {
+        list.innerHTML = c.map(function (it) {
+          return '<li class="citem">' +
+            '<span class="citem__thumb"><img src="' + esc(it.img) + '" alt="" onerror="this.remove()"></span>' +
+            '<div><p class="citem__name">' + esc(it.name) + '</p><p class="citem__meta">' + esc(it.color) + ' · Cantidad: ' + it.qty + '</p>' +
+            '<button class="citem__remove" type="button" data-remove="' + esc(it.id) + '">Eliminar</button></div>' +
+            '<p class="citem__price">' + fmt(it.price * it.qty) + '</p></li>';
+        }).join('');
+      }
+      var left = FREE_SHIPPING - total;
+      document.getElementById('drawer-ship').textContent = !c.length ? 'Envío gratis a partir de ' + fmt(FREE_SHIPPING) :
+        (left > 0 ? 'Te faltan ' + fmt(left) + ' para el envío gratis' : '¡Tienes el envío gratis!');
+      document.getElementById('drawer-ship-bar').style.width = Math.min(100, total / FREE_SHIPPING * 100) + '%';
+      document.getElementById('drawer-total').textContent = fmt(total);
+    }
+    document.getElementById('drawer-list').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-remove]'); if (!b) return;
+      saveCart(loadCart().filter(function (it) { return it.id !== b.dataset.remove; }));
+      document.getElementById('drawer-added').hidden = true;
+      renderDrawer();
+    });
+    function openDrawer(added) {
+      var note = document.getElementById('drawer-added');
+      if (added) { document.getElementById('drawer-added-text').textContent = added.name + ' añadido a tu cesta'; note.hidden = false; }
+      else note.hidden = true;
+      renderDrawer();
+      if (!drawer.open) { drawer.showModal(); lockScroll(); }
+    }
+
+    // =====================================================================
+    //  FICHA DE PRODUCTO Y CARRUSEL
+    // =====================================================================
+    var pm = document.getElementById('product-modal');
+    var pmState = { list: [], i: 0, title: '', accent: '' };
+    var CART_ICON = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h3l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.7a1.5 1.5 0 0 0 1.5-1.1L21 7H6"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>';
+
+    function listBlock(title, items, open) {
+      return '<details class="acc"' + (open ? ' open' : '') + '><summary>' + title + '</summary><ul>' +
+        items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></details>';
+    }
+    function renderProduct(dir) {
+      var p = pmState.list[pmState.i], many = pmState.list.length > 1;
+      pm.style.setProperty('--accent', pmState.accent);
+      pm.style.setProperty('--dir', (dir || 0) * 28 + 'px');
+
+      // Columna izquierda: vídeo o foto (si falta la foto, se ve el recuadro gris con su nombre de archivo)
+      var ph = document.getElementById('pm-ph');
+      ph.setAttribute('data-label', p.img.replace('Img/', ''));
+      ph.innerHTML = p.video
+        ? '<video src="' + esc(p.video) + '" poster="' + esc(p.img) + '" autoplay muted loop playsinline disablepictureinpicture onerror="this.remove()"></video>'
+        : '<img src="' + esc(p.img) + '" alt="' + esc(p.name) + '" onerror="this.remove()">';
+      document.getElementById('pm-prev').hidden = !many;
+      document.getElementById('pm-next').hidden = !many;
+      document.getElementById('pm-dots').innerHTML = many ? pmState.list.map(function (_, k) {
+        return '<button class="pmodal__dot" type="button" data-dot="' + k + '" aria-label="Producto ' + (k + 1) + '"' + (k === pmState.i ? ' aria-current="true"' : '') + '></button>';
+      }).join('') : '';
+
+      // Columna derecha: información
+      document.getElementById('pm-body').innerHTML =
+        '<p class="pmodal__eyebrow"><span>' + esc(pmState.title) + '</span>' + (many ? '<span class="pmodal__count">' + (pmState.i + 1) + ' / ' + pmState.list.length + '</span>' : '') + '</p>' +
+        '<h2 class="pmodal__name" id="pm-name">' + esc(p.name) + '</h2>' +
+        '<p class="pmodal__price">' + fmt(p.price) + '</p>' +
+        '<p class="pmodal__color">Color: ' + esc(p.color) + '</p>' +
+        '<p class="pmodal__desc">' + esc(p.desc) + '</p>' +
+        '<div class="pmodal__buy"><button class="btn btn--block" type="button" id="pm-add">' + CART_ICON + '<span>Añadir a la cesta</span></button>' +
+          '<p class="pmodal__ship">Envío gratis a partir de ' + fmt(FREE_SHIPPING) + ' · Devoluciones gratis en 30 días</p></div>' +
+        listBlock('Materiales', p.materials, true) + listBlock('Cuidados', p.care) + listBlock('Medidas', p.measures);
+
+      document.getElementById('pm-add').addEventListener('click', function () {
+        var b = this, label = b.querySelector('span');
+        addToCart(p);
+        b.classList.add('is-added'); label.textContent = 'Añadido';
+        setTimeout(function () { b.classList.remove('is-added'); label.textContent = 'Añadir a la cesta'; }, 1600);
+      });
+
+      if (dir) {
+        [document.getElementById('pm-body'), ph].forEach(function (el) { el.classList.remove('is-switching'); void el.offsetWidth; el.classList.add('is-switching'); });
+      }
+      document.querySelector('.pmodal__info').scrollTop = 0;
+      pm.scrollTop = 0;
+      track('view_item', { currency: 'EUR', value: p.price, items: [{ item_id: p.id, item_name: p.name, price: p.price }] });
+    }
+    function openProducts(list, i, title, accent) {
+      pmState = { list: list, i: i || 0, title: title, accent: accent };
+      renderProduct(0);
+      if (!pm.open) { pm.showModal(); lockScroll(); }
+      pm.querySelector('.pmodal__close').focus();
+    }
+    function step(d) {
+      var n = pmState.list.length; if (n < 2) return;
+      pmState.i = (pmState.i + d + n) % n; renderProduct(d);
+    }
+    document.getElementById('pm-prev').addEventListener('click', function () { step(-1); });
+    document.getElementById('pm-next').addEventListener('click', function () { step(1); });
+    document.getElementById('pm-dots').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-dot]'); if (!b) return;
+      var k = +b.dataset.dot; if (k === pmState.i) return;
+      var d = k > pmState.i ? 1 : -1; pmState.i = k; renderProduct(d);
+    });
+    pm.addEventListener('keydown', function (e) {
+      if (e.target.closest('summary')) return;
+      if (e.key === 'ArrowRight') step(1);
+      if (e.key === 'ArrowLeft') step(-1);
+    });
+    // Deslizar con el dedo en móvil
+    var touchX = null, media = document.getElementById('pm-media');
+    media.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    media.addEventListener('touchend', function (e) {
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX; touchX = null;
+      if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+    });
+    pm.addEventListener('close', function () { document.getElementById('pm-ph').innerHTML = ''; });
+
+    // Bolsos de "New" y etiqueta del hero: ficha individual
+    document.querySelectorAll('[data-product]').forEach(function (b) {
+      b.addEventListener('click', function () { openProducts([PRODUCTS[b.dataset.product]], 0, 'New · Nueva colección', 'var(--rose)'); });
+    });
+    // Icono de cesta en cada bolso
+    document.querySelectorAll('[data-add]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        addToCart(PRODUCTS[b.dataset.add]);
+        b.classList.add('is-added'); setTimeout(function () { b.classList.remove('is-added'); }, 1400);
+      });
+    });
+    // Beneficios: carrusel de su colección
+    document.querySelectorAll('[data-collection]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var col = COLLECTIONS[b.dataset.collection];
+        openProducts(col.items, 0, col.title, col.accent);
+      });
+    });
+    updateBadge();
+    window.addEventListener('pageshow', function () { updateBadge(); });   // al volver desde carrito.html
+
+    // ---------- Formulario ----------
+    var form = document.getElementById('lead-form');
+    var started = false, converted = false;
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    form.addEventListener('focusin', function () {
+      if (!started) { started = true; track('form_start'); }
+    });
+    function setError(input, msg) {
+      document.getElementById('error-' + input.id).textContent = msg;
+      input.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      return !msg;
+    }
+    function validate() {
+      var ok = true;
+      ok = setError(form.nombre, form.nombre.value.trim() ? '' : 'Escribe tu nombre.') && ok;
+      ok = setError(form.email, EMAIL_RE.test(form.email.value.trim()) ? '' : 'Revisa tu email: parece que falta algo.') && ok;
+      ok = setError(form.privacidad, form.privacidad.checked ? '' : 'Necesitamos que aceptes la política de privacidad.') && ok;
+      return ok;
+    }
+    form.email.addEventListener('blur', function () {
+      if (form.email.value) setError(form.email, EMAIL_RE.test(form.email.value.trim()) ? '' : 'Revisa tu email: parece que falta algo.');
+    });
+    function showSuccess() {
+      converted = true;
+      form.hidden = true;
+      var ok = document.getElementById('form-success');
+      ok.hidden = false; ok.focus();
+      track('generate_lead');
+      updateSticky();
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validate()) return;
+      var btn = form.querySelector('button[type="submit"]');
+      var label = btn.innerHTML;
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      // Sin código de Formspree, el formulario funciona en modo demostración
+      if (form.action.indexOf('TU_CODIGO') !== -1) {
+        console.warn('Formulario en modo demostración: pon tu código de Formspree en el atributo action.');
+        setTimeout(showSuccess, 600);
+        return;
+      }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function (res) { if (res.ok) showSuccess(); else throw new Error(res.status); })
+        .catch(function () {
+          btn.disabled = false; btn.innerHTML = label;
+          setError(form.email, 'No hemos podido enviar el formulario. Inténtalo de nuevo.');
+        });
+    });
+
+    // ---------- Botón fijo en móvil ----------
+    var sticky = document.getElementById('sticky-cta');
+    var heroVisible = true, formVisible = false;
+    function updateSticky() {
+      var show = !heroVisible && !formVisible && !converted;
+      sticky.classList.toggle('is-visible', show);
+      sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
+      sticky.tabIndex = show ? 0 : -1;
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) { heroVisible = en[0].isIntersecting; updateSticky(); })
+        .observe(document.querySelector('.hero'));
+      new IntersectionObserver(function (en) { formVisible = en[0].isIntersecting; updateSticky(); }, { threshold: 0.2 })
+        .observe(document.getElementById('registro'));
+    }
+
+    // ---------- Pop-up de intención de salida ----------
+    var popup = document.getElementById('exit-popup');
+    var popupShown = false;
+    try { popupShown = sessionStorage.getItem('exitShown') === '1'; } catch (err) {}
+    function closePopup() { popup.hidden = true; }
+    if (window.matchMedia('(pointer: fine) and (min-width: 1100px)').matches) {
+      document.addEventListener('mouseout', function (e) {
+        if (popupShown || converted || e.relatedTarget || e.clientY > 0 || document.querySelector('dialog[open]')) return;
+        popupShown = true;
+        try { sessionStorage.setItem('exitShown', '1'); } catch (err) {}
+        popup.hidden = false;
+        popup.querySelector('.btn').focus();
+        track('exit_popup_view');
+      });
+    }
+    popup.querySelector('.exit__close').addEventListener('click', closePopup);
+    popup.querySelector('.btn').addEventListener('click', closePopup);
+    popup.addEventListener('click', function (e) { if (e.target === popup) closePopup(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePopup(); });
+
+    // ---------- Scroll del 75 % ----------
+    var scrolled75 = false;
+    window.addEventListener('scroll', function () {
+      if (scrolled75) return;
+      var h = document.documentElement;
+      if ((h.scrollTop + window.innerHeight) / h.scrollHeight >= 0.75) { scrolled75 = true; track('scroll_75'); }
+    }, { passive: true });
+  </script>
+</body>
+</html>
